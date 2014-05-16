@@ -15,7 +15,11 @@ module.exports = function (grunt) {
         'gh-pages': {
             options: {
                 base: '_book',
-                branch: 'master'
+                branch: 'master',
+                user: {
+                    name: 'Grunt GitBook',
+                    email: 'grunt-gh-pages@assetrinc.github.io'
+                }
             },
             src: ['**']
         },
