@@ -1,0 +1,21 @@
+{
+    "name": "assetrinc.github.io",
+    "version": "0.1.0",
+    "description": "",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/assetrinc/assetrinc.github.io.git"
+    },
+    "author": "Matt Light",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+        "grunt": "~0.4.1",
+        "grunt-gitbook": "0.4.2",
+        "grunt-gh-pages": "0.9.1",
+        "grunt-contrib-clean": "~0.5.0"
+    },
+    "peerDependencies": {
+        "grunt": "~0.4.1"
+    }
+}
