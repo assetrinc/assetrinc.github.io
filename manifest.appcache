@@ -1,8 +1,15 @@
 CACHE MANIFEST
-# Revision 1400217876869
+# Revision 1400291100324
 
 CACHE:
 index.html
+installation.html
+manifest.html
+usage/cake-php-2.html
+usage/pure-php.html
+usage/silex-1.html
+usage/symfony-2.html
+usage.html
 gitbook/app.js
 gitbook/fonts/anonymouspro/400.woff
 gitbook/fonts/anonymouspro/400i.woff
