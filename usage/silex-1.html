@@ -42,7 +42,7 @@
 
 
         
-    <div class="book" data-github="assetrinc/assetrinc" data-level="3.2" data-basepath=".." data-revision="1400291100323">
+    <div class="book" data-github="assetrinc/assetrinc" data-level="3.2" data-basepath=".." data-revision="1400344455175">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -234,6 +234,51 @@
 </div>
 
                 <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_6">
+                    
+                        <h1 id="basic-usage-with-silex-1-x">Basic Usage with Silex 1.x</h1>
+<p>If you are using Silex 1.x, we recommend making use of the AssetServiceProvider
+provided by
+<a href="https://github.com/lightster/lstr-silex-asset" target="_blank"><code>lightster/lstr-silex-asset</code></a>.</p>
+<h2 id="using-lstr-silex-asset">Using lstr-silex-asset</h2>
+<h3 id="installation-via-composer">Installation via Composer</h3>
+<p>Installing lst-silex-app is simple. Add <code>lightster/lstr-silex-asset</code> to your
+composer.json and run <code>composer update lightster/lstr-silex-asset</code>.</p>
+<h3 id="enable-the-service-provider">Enable the Service Provider</h3>
+<p>In your <code>index.php</code> or wherever you register service providers, register
+the AssetServiceProvider:</p>
+<pre><code>$app-&gt;register(new \Lstr\Silex\Asset\AssetServiceProvider(
+    &#39;path&#39;       =&gt; array(
+        &#39;app&#39; =&gt; __DIR__ . &#39;/src/assets/app&#39;,
+    ),
+    &#39;url_prefix&#39; =&gt; &#39;/asset&#39;,
+));
+</code></pre><h3 id="add-a-get-route-to-your-application">Add a <code>get</code> Route to Your Application</h3>
+<p>In your <code>index.php</code> or wherever you register your controllers, register
+an <code>/asset/{name}</code> route:</p>
+<pre><code>$controllers-&gt;get(&#39;/asset/{name}&#39;, function ($name, Application $app, Request $request) {
+    return $app[&#39;lstr.asset.responder&#39;]-&gt;getResponse(
+        $name,
+        array(
+            &#39;request&#39; =&gt; $request,
+        )
+    );
+})-&gt;assert(&#39;name&#39;, &#39;.*&#39;);
+</code></pre><p>The <code>assert(&#39;name&#39;, &#39;.*&#39;)</code> on the route tells Silex to pass everything after
+<code>/asset/</code> to the controller as a single parameter, <code>$name</code>. Without the <code>assert</code>,
+Silex will treat the next slash after <code>/asset/</code> as a separate parameter
+and report that no route matches the given request.</p>
+<p>Assetrinc needs the entire asset path in order to locate the asset.</p>
+<h3 id="adding-css-and-js-includes-to-your-templates">Adding CSS and JS Includes to Your Templates</h3>
+<p>In your <code>php</code> and <code>phtml</code> template files, you may now create <code>&lt;link&gt;</code> and <code>&lt;script&gt;</code>
+tags to include your CSS and JS, respectively, using the <code>lstr-silex-asset</code>
+display helpers:</p>
+<pre><code>&lt;?php echo $app[&#39;lstr.asset&#39;]-&gt;cssTag(&#39;app/bundle/application.css&#39;); ?&gt;
+&lt;?php echo $app[&#39;lstr.asset&#39;]-&gt;jsTag(&#39;app/bundle/application.js&#39;); ?&gt;
+</code></pre>
+                    
+                    </section>
                 
                 </div>
             </div>
